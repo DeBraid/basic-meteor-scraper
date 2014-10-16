@@ -7,31 +7,35 @@ Meteor.call("getTime", function(error, result) {
   Session.set("currentTime", time);
 });
 
-// Meteor.call("etfTitles", function(error, result) {
+// Meteor.call("etfList", function(error, result) {
 //   if (error)
 //       console.log(error)
-
-//   Session.set("etfTitles", result);
+//   var tickers = _.map(result, function (x) {
+//     var ticks = x.split(' ');
+//     return ticks[0];
+//   })  
+//   Session.set("tickers", tickers);
 // });
 
-Meteor.call("etfTitles", function(error, result) {
+Meteor.call("etfList", function(error, result) {
   if (error)
       console.log(error)
-    var badString = "List";
 
-    var sorted = _.filter(result, function(x) { 
-      
-      var ticker = x.split(' ');
+  Session.set("etfList", result);
 
-      return ticker[0] != badString; 
-    });
-    
-  Session.set("etfTitles", sorted);
+  var tickers = _.map(result, function (x) {
+    var ticks = x.split(' ');
+      return ticks[0];
+    })  
+  Session.set("tickers", tickers);
 });
 
 Template.etfs.helpers({
-  etfTitles: function () {
-    return Session.get("etfTitles");
+  etfList: function () {
+    return Session.get("etfList");
+  },
+  tickers: function () {
+    return Session.get("tickers");
   }
 }); 
 
