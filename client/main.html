@@ -1,0 +1,14 @@
+<head>
+  <title>ETF's In Canada</title>
+</head>
+
+<body>
+  <h1>Charts for ETFs</h1>
+  {{> whatTime }}
+</body>
+
+<template name="whatTime">
+  {{#if currTime }}
+  <h3>{{ currTime }}</h3>
+  {{/if }}
+</template>
