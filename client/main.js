@@ -1,3 +1,4 @@
+
 Meteor.call("getTime", function(error, result) {
   if (error)
       console.log(error)
@@ -6,12 +7,26 @@ Meteor.call("getTime", function(error, result) {
   Session.set("currentTime", time);
 });
 
+// Meteor.call("etfTitles", function(error, result) {
+//   if (error)
+//       console.log(error)
+
+//   Session.set("etfTitles", result);
+// });
+
 Meteor.call("etfTitles", function(error, result) {
   if (error)
       console.log(error)
-  var title = result;
+    var badString = "List";
 
-  Session.set("etfTitles", result);
+    var sorted = _.filter(result, function(x) { 
+      
+      var ticker = x.split(' ');
+
+      return ticker[0] != badString; 
+    });
+    
+  Session.set("etfTitles", sorted);
 });
 
 Template.etfs.helpers({
@@ -23,3 +38,4 @@ Template.etfs.helpers({
 Template.whatTime.currTime = function (arg) {
   return Session.get("currentTime");
 };
+

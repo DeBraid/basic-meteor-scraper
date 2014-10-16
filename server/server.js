@@ -14,14 +14,7 @@ Meteor.methods({
         $('#mw-content-text > ul:nth-child(n) > li:nth-child(n)').map(function () {
           arr.push($(this).text())
         })
-        console.log(arr)
         return arr; 
-        // var winning = arr.map(function ( i ) {
-        //   var singles = [];
-        //   singles.push(i.split(','));
-        //   return singles;
-        // });
-        // return winning;
     }
 });
 
