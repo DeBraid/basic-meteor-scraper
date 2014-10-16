@@ -5,10 +5,28 @@
 <body>
   <h1>Mini Example for Meteor Scraping</h1>
   {{> whatTime }}
+  {{> etfs }}
 </body>
 
 <template name="whatTime">
   {{#if currTime }}
   <h3>{{ currTime }}</h3>
   {{/if }}
+</template>
+
+<template name="etfs">
+  <div class="container">
+    <div class="row">
+    
+      {{#each etfTitles }}
+
+        <p>{{ this }}</p>
+
+      {{/each }}
+    
+      
+    </div>
+  </div>
+
+  
 </template>
