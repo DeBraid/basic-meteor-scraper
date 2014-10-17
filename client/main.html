@@ -15,16 +15,22 @@
 </template>
 
 <template name="etfs">
-  <div class="container">
-    <div class="row">
+  
+    <div class="container marketing">
 
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
       {{#each tickers }}
-        <div class="col-sm-3 chart">
-          <h4>{{ this }}</h4>
-          <img src="http://stockcharts.com/c-sc/sc?chart={{ this }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
+        <div class="col-md-4 text-center chart">
+          <img src="http://stockcharts.com/c-sc/sc?chart={{ tick }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
+          <h2>{{ tick }}</h2>
+          <p>{{ titles }}</p>
         </div>
       {{/each }}
 
-    </div>
-  </div>  
+      </div><!-- /.row -->
+
+    </div>  
+  
 </template>
+

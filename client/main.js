@@ -6,6 +6,14 @@ Meteor.call("getTime", function(error, result) {
   Session.set("currentTime", time);
 });
 
+Meteor.call("perfData", function(error, result) {
+  if (error)
+      console.log(error)
+  console.log(result); 
+  
+  // Session.set("currentTime", time);
+});
+
 Meteor.call("etfList", function(error, result) {
   if (error)
       console.log(error)
@@ -14,7 +22,11 @@ Meteor.call("etfList", function(error, result) {
 
   var tickers = _.map(result, function (x) {
     var ticks = x.split(' ');
-      return ticks[0];
+      var data = {
+       tick: ticks[0], 
+       titles: x
+      };
+      return data;
     })  
   Session.set("tickers", tickers);
 });

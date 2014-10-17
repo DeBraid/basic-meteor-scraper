@@ -23,6 +23,15 @@ Meteor.methods({
         return ticker[0] != badString; 
       });
       return sorted; 
-  }
+  },
+  perfData: function () {
+    // var url = "http://finance.yahoo.com/q/pm?s=" + ticker + ".TO"
+
+    result = Meteor.http.get("http://finance.yahoo.com/q/pm?s=XIU.TO");
+      $ = cheerio.load(result.content);
+      var data = $('#yfncsumtab > tbody > tr:nth-child(2) > td:nth-child(1) > table.yfnc_datamodoutline1 > tbody > tr > td > table > tbody > tr:nth-child(1) > td.yfnc_datamoddata1').html();
+      return data;
+    
+  }  
 });
 
