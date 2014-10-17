@@ -1,0 +1,10 @@
+.chart {
+  background-color: #c2ccc7;
+  float:left;
+  width: 350px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 50px 25px 50px;
+  border-top: 2px dashed;
+}

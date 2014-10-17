@@ -17,24 +17,14 @@
 <template name="etfs">
   <div class="container">
     <div class="row">
-    
-      {{#each etfList }}
-
-        <p>{{ this }}</p>
-
-      {{/each }}
 
       {{#each tickers }}
-
-        <img src="http://stockcharts.com/c-sc/sc?chart={{ this }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
-
+        <div class="chart">
+          <h4>{{ this }}</h4>
+          <img src="http://stockcharts.com/c-sc/sc?chart={{ this }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
+        </div>
       {{/each }}
 
-      
-    
-      
     </div>
-  </div>
-
-  
+  </div>  
 </template>

@@ -1,4 +1,3 @@
-
 Meteor.call("getTime", function(error, result) {
   if (error)
       console.log(error)
@@ -6,16 +5,6 @@ Meteor.call("getTime", function(error, result) {
   
   Session.set("currentTime", time);
 });
-
-// Meteor.call("etfList", function(error, result) {
-//   if (error)
-//       console.log(error)
-//   var tickers = _.map(result, function (x) {
-//     var ticks = x.split(' ');
-//     return ticks[0];
-//   })  
-//   Session.set("tickers", tickers);
-// });
 
 Meteor.call("etfList", function(error, result) {
   if (error)
@@ -31,9 +20,6 @@ Meteor.call("etfList", function(error, result) {
 });
 
 Template.etfs.helpers({
-  etfList: function () {
-    return Session.get("etfList");
-  },
   tickers: function () {
     return Session.get("tickers");
   }
