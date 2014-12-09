@@ -1,5 +1,5 @@
 <head>
-  <title>Basic Web Scraper</title>
+  <title>ETF Charts in Canada</title>
 </head>
 
 <body>
@@ -16,19 +16,18 @@
 
 <template name="etfs">
   
-    <div class="container marketing">
+    <div class="container">
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-      {{#each tickers }}
-        <div class="col-md-4 text-center chart">
-          <img src="http://stockcharts.com/c-sc/sc?chart={{ tick }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
-          <h2>{{ tick }}</h2>
-          <p>{{ titles }}</p>
-        </div>
-      {{/each }}
-
-      </div><!-- /.row -->
+        {{#each tickers }}
+          <div class="col-sm-4 text-centered chart">
+            <h2 class="ticker-symbol">{{ tick }}</h2>
+            <p>{{ titles }}</p>
+            <img src="http://stockcharts.com/c-sc/sc?chart={{ tick }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
+          </div>
+        {{/each }}
+      </div>
 
     </div>  
   
