@@ -26,3 +26,20 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+#lineChart.axis path,
+#lineChart.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#lineChart.x.axis path {
+  display: none;
+}
+
+#lineChart.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

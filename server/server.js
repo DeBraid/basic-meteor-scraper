@@ -19,7 +19,10 @@ Meteor.methods({
       return sorted; 
   },
   quandl: function () {
-    var url = "https://www.quandl.com/api/v1/datasets/YAHOO/TSX_ZEB_TO.json?auth_token=";
+    var ticker = "XIU";
+    var url = "https://www.quandl.com/api/v1/datasets/YAHOO/TSX_" + 
+              ticker + 
+              "_TO.json?auth_token=";
     var authKey = Meteor.settings.quandlKey;
     var response = Meteor.http.get( url + authKey );
     return response;

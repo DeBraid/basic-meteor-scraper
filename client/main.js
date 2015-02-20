@@ -2,8 +2,7 @@ Meteor.call("quandl", function(error, result) {
   if (error)
       console.log(error)
   var response = JSON.parse(result.content);
-  console.log("response", response); 
-  
+
   Session.set("quandlList", response);
 });
 
@@ -33,5 +32,10 @@ Template.etfs.helpers({
 Template.quandl.helpers({
   quandlList: function () {
     return Session.get("quandlList");
+  },
+  moarData: function () {
+    console.log("runngin code");
+    var response = Session.get("quandlList");
+    console.log("response.data", response.data); 
   }
 }); 

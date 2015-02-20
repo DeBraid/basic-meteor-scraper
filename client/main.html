@@ -23,7 +23,7 @@
           <div class="col-sm-4 text-centered chart">
             <h2 class="ticker-symbol">{{ tick }}</h2>
             <p>{{ titles }}</p>
-            <img src="http://stockcharts.com/c-sc/sc?chart={{ tick }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt="">
+            <!-- <img src="http://stockcharts.com/c-sc/sc?chart={{ tick }}.to,uu[305,a]dacayaci[pb20!b50][dg]" alt=""> -->
           </div>
         {{/each }}
       </div>
@@ -35,12 +35,27 @@
 <template name="quandl">
   
   <h1>quandlList template</h1>
+    {{> lineChart}}
+
+  {{#with moarData }}
+    <h1>moar</h1>
+  {{/with }}
+
 
   {{#with quandlList }}
     <h3><strong>{{ code }}:</strong>  {{ name }}</h3>
     
-      {{#each column_names }}
+      <!-- {{#each column_names }}
           <div class="col-sm-1">{{ this }} </div>
-      {{/each}}  
+      {{/each}}   -->
   {{/with  }}
+</template>
+
+<template name="lineChart">
+  <h4>Line Chart </h4>
+    <svg id="lineChart">
+    </svg>
+    <input type="button" id="add" value="Add a Value" />
+    <input type="button" id="remove" value="Remove a Value" />
+    <input type="button" id="randomize" value="Randomize Values" />
 </template>
