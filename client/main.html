@@ -3,8 +3,8 @@
 </head>
 
 <body>
-  <h1>Mini Example for Meteor Scraping</h1>
-  {{> whatTime }}
+  <h1>ETFs</h1>
+  {{> quandl }}
   {{> etfs }}
 </body>
 
@@ -18,7 +18,6 @@
   
     <div class="container">
 
-      <!-- Three columns of text below the carousel -->
       <div class="row">
         {{#each tickers }}
           <div class="col-sm-4 text-centered chart">
@@ -33,3 +32,15 @@
   
 </template>
 
+<template name="quandl">
+  
+  <h1>quandlList template</h1>
+
+  {{#with quandlList }}
+    <h3><strong>{{ code }}:</strong>  {{ name }}</h3>
+    
+      {{#each column_names }}
+          <div class="col-sm-1">{{ this }} </div>
+      {{/each}}  
+  {{/with  }}
+</template>

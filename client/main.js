@@ -1,17 +1,10 @@
-Meteor.call("getTime", function(error, result) {
+Meteor.call("quandl", function(error, result) {
   if (error)
       console.log(error)
-  var time = "The current time is " + result;
+  var response = JSON.parse(result.content);
+  console.log("response", response); 
   
-  Session.set("currentTime", time);
-});
-
-Meteor.call("perfData", function(error, result) {
-  if (error)
-      console.log(error)
-  console.log(result); 
-  
-  // Session.set("currentTime", time);
+  Session.set("quandlList", response);
 });
 
 Meteor.call("etfList", function(error, result) {
@@ -31,13 +24,14 @@ Meteor.call("etfList", function(error, result) {
   Session.set("tickers", tickers);
 });
 
+
 Template.etfs.helpers({
   tickers: function () {
     return Session.get("tickers");
   }
 }); 
-
-Template.whatTime.currTime = function (arg) {
-  return Session.get("currentTime");
-};
-
+Template.quandl.helpers({
+  quandlList: function () {
+    return Session.get("quandlList");
+  }
+}); 

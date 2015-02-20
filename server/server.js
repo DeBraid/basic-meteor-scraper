@@ -1,4 +1,4 @@
-var cheerio =  Meteor.require('cheerio');
+  var cheerio =  Meteor.require('cheerio');
 
 Meteor.methods({
     getTime: function () {
@@ -24,13 +24,17 @@ Meteor.methods({
       });
       return sorted; 
   },
-  perfData: function () {
+  quandl: function () {
     // var url = "http://finance.yahoo.com/q/pm?s=" + ticker + ".TO"
-
-    result = Meteor.http.get("http://finance.yahoo.com/q/pm?s=XIU.TO");
-      $ = cheerio.load(result.content);
-      var data = $('#yfncsumtab > tbody > tr:nth-child(2) > td:nth-child(1) > table.yfnc_datamodoutline1 > tbody > tr > td > table > tbody > tr:nth-child(1) > td.yfnc_datamoddata1').html();
-      return data;
+    var url = "https://www.quandl.com/api/v1/datasets/YAHOO/TSX_ZEB_TO.json?auth_token=";
+    var authKey = Meteor.settings.quandlKey;
+    console.log("authKey", authKey);
+    var response = Meteor.http.get( url + authKey );
+    return response;
+      
+      // $ = cheerio.load(result.content);
+      // var data = $('#yfncsumtab > tbody > tr:nth-child(2) > td:nth-child(1) > table.yfnc_datamodoutline1 > tbody > tr > td > table > tbody > tr:nth-child(1) > td.yfnc_datamoddata1').html();
+      // return data;
     
   }  
 });
