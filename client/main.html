@@ -4,6 +4,7 @@
 
 <body>
   <h1>ETFs</h1>
+  {{> lineChart}}
   {{> quandl }}
   {{> etfs }}
 </body>
@@ -34,9 +35,9 @@
 
 <template name="quandl">
   
-  <h1>quandlList template</h1>
-    {{> lineChart}}
+    
 
+  <h1>quandlList template</h1>
   {{#with moarData }}
     <h1>moar</h1>
   {{/with }}
