@@ -80,18 +80,23 @@ Template.lineChart.rendered = function(){
     var dataset = [];
 
     if (!response) {
-      
+      Meteor.defer(function () {
+        var response = Session.get("quandlList");
+        console.log("Meteor defer is running")
+        var respData = response.data;
+        return respData
+      })
+      return respData
     }
+    // console.log("respData", respData);
     var respData = response.data;
-    console.log("respData", respData);
     
     _.map( respData , function (item, index) {
-      if ( index < 500 ) {
+      if ( index < 50 ) {
         var parseDate = d3.time.format("%Y-%m-%d").parse;
         var myDate = parseDate(item[0]);
         console.log(myDate);
         dataset.push({
-          // date : moment().startOf('day').subtract(Math.floor(Math.random() * 1000), 'days').toDate(),
           date : myDate,
           value : item[1],
         });
