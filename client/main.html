@@ -34,14 +34,7 @@
 </template>
 
 <template name="quandl">
-  
-    
-
   <h1>quandlList template</h1>
-  {{#with moarData }}
-    <h1>moar</h1>
-  {{/with }}
-
 
   {{#with quandlList }}
     <h3><strong>{{ code }}:</strong>  {{ name }}</h3>
@@ -53,10 +46,18 @@
 </template>
 
 <template name="lineChart">
-  <h4>Line Chart </h4>
-    <svg id="lineChart">
-    </svg>
-    <input type="button" id="add" value="Add a Value" />
-    <input type="button" id="remove" value="Remove a Value" />
-    <input type="button" id="randomize" value="Randomize Values" />
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h4>Line Chart </h4>
+          <svg id="lineChart">
+          </svg>
+        </div>
+        <div class="col-sm-3">
+          <input type="button" id="add" value="Add a Value" />
+          <input type="button" id="remove" value="Remove a Value" />
+          <input type="button" id="randomize" value="Randomize Values" />
+        </div>
+      </div>
+    </div>
 </template>

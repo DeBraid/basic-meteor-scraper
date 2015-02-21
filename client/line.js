@@ -1,5 +1,4 @@
 var Points = new Meteor.Collection(null);
-
 if(Points.find({}).count() === 0){
   for(i = 0; i < 20; i++)
     Points.insert({
@@ -31,9 +30,10 @@ Template.lineChart.events({
 Template.lineChart.rendered = function(){
   //Width and height
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 600 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 400 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
+  // data format: "2015-01-30"
   var x = d3.time.scale()
     .range([0, width]);
 
@@ -76,7 +76,28 @@ Template.lineChart.rendered = function(){
     .text("Price ($)");
 
   Deps.autorun(function(){
-    var dataset = Points.find({},{sort:{date:-1}}).fetch();
+    var response = Session.get("quandlList");
+    var dataset = [];
+
+    if (!response) {
+      
+    }
+    var respData = response.data;
+    console.log("respData", respData);
+    
+    _.map( respData , function (item, index) {
+      if ( index < 500 ) {
+        var parseDate = d3.time.format("%Y-%m-%d").parse;
+        var myDate = parseDate(item[0]);
+        console.log(myDate);
+        dataset.push({
+          // date : moment().startOf('day').subtract(Math.floor(Math.random() * 1000), 'days').toDate(),
+          date : myDate,
+          value : item[1],
+        });
+        console.log("item:", item[0], typeof(item[1]));
+      }
+    });
 
     var paths = svg.selectAll("path.line")
       .data([dataset]); //todo - odd syntax here - should use a key function, but can't seem to get that working

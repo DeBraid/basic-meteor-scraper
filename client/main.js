@@ -34,8 +34,20 @@ Template.quandl.helpers({
     return Session.get("quandlList");
   },
   moarData: function () {
-    console.log("runngin code");
-    var response = Session.get("quandlList");
-    console.log("response.data", response.data); 
+    // console.log("moardata run");
+    // var response = Session.get("quandlList");
+    // console.log("response.data", response.data); 
+    // console.log("response.data[112][0]", response.data[112][0]); 
+    // var resp = response.data;
+    // _.map(resp, function (item, index) {
+    //   if ( index < 10 ) {
+    //     Points.insert({
+    //       date : item[0],
+    //       value : item[1],
+    //     });
+    //     console.log("item:", item[1]);
+    //   }
+    // });
+    
   }
 }); 
